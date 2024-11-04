@@ -93,6 +93,7 @@ func (w *workerPool) addWorker() {
 	w.workers[len(w.workers)] = worker
 
 	w.wg.Add(1)
+	fmt.Printf("Added worker with id %d\n", len(w.workers))
 
 	//	Запускаем созданный воркер
 	go func() {
@@ -111,5 +112,6 @@ func (w *workerPool) removeWorker(id int) {
 
 	workerVal.Stop()
 	delete(w.workers, id)
+	fmt.Printf("Worker %d removed\n", id)
 
 }
